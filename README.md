@@ -12,18 +12,35 @@ Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+.
+├─ public/                          # arquivos estáticos (imagens, favicon, og.jpg, etc.)
+│  ├─ hero-senior.jpg
+│  ├─ logo.jpg
+│  └─ favicon.svg
+├─ src/
+│  ├─ assets/                       
+│  ├─ components/                   # componentes de UI (seções da landing)
+│  │  ├─ Contato.astro
+│  │  ├─ Depoimentos.astro
+│  │  ├─ Features.astro
+│  │  ├─ Footer.astro
+│  │  ├─ Hero.astro
+│  │  ├─ Navbar.astro
+│  │  ├─ Servicos.astro
+│  ├─ layouts/                      # layouts compartilhados
+│  │  ├─ Base.astro                 # layout principal (head, fontes, <slot/>)
+│  │  └─ Layout.astro               # (se precisar de outro layout)
+│  ├─ pages/                        # rotas do site (cada arquivo vira uma página)
+│  │  └─ index.astro                # página inicial
+│  └─ styles/
+│     └─ global.css                 # Tailwind v4 + utilitárias do tema
+├─ .gitignore
+├─ astro.config.mjs                 # config do Astro (+ plugin @tailwindcss/vite)
+├─ package.json                     # scripts e dependências
+├─ package-lock.json
+├─ README.md
+└─ tsconfig.json
+
 ```
 
 To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
