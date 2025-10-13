@@ -1,0 +1,24 @@
+---
+const foto = "/logo.jpg"; // coloque sua imagem em /public
+---
+
+<header class="bg-white/90 backdrop-blur sticky top-0 z-50 border-b border-slate-100">
+  <div class="container-site flex items-center justify-between h-16">
+    <a href="#" class="flex items-center gap-2 text-xl font-semibold text-[var(--brand-600)]">
+      <!-- logo simples -->
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden class="shrink-0">
+        <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      Lar Recanto do Amanhecer
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-slate-700">
+      <a href="#inicio" class="hover:text-[var(--brand-600)]">Início</a>
+      <a href="#sobre" class="hover:text-[var(--brand-600)]">Sobre Nós</a>
+      <a href="#servicos" class="hover:text-[var(--brand-600)]">Serviços</a>
+      <a href="#depoimentos" class="hover:text-[var(--brand-600)]">Depoimentos</a>
+    </nav>
+
+    <a href="#contato" class="btn btn-primary">Agendar Visita</a>
+  </div>
+</header>

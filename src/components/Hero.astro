@@ -1,0 +1,20 @@
+---
+const foto = "/hero-senior.jpg"; // coloque sua imagem em /public
+---
+
+<section id="inicio" class="container-site grid md:grid-cols-2 gap-10 items-center py-16 md:py-24">
+  <div>
+    <h1 class="h1 mb-6">Cuidado com amor<br/>e dignidade</h1>
+    <p class="text-lg text-slate-600 mb-8">
+      Um lar acolhedor onde seus entes queridos recebem cuidados profissionais com o carinho e respeito que merecem.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#contato" class="btn btn-primary">Agendar Visita</a>
+      <a href="#sobre" class="btn btn-ghost">Conheça Nossa História</a>
+    </div>
+  </div>
+
+  <div class="order-first md:order-last">
+    <img src={foto} alt="Morador feliz em jardim florido" class="rounded-2xl w-full object-cover shadow-md border border-slate-100" />
+  </div>
+</section>

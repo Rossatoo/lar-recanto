@@ -1,0 +1,41 @@
+---
+const itens = [
+  {
+    texto: '“Minha mãe está no Lar Recanto do Amanhecer há 2 anos e não poderia estar mais feliz. A equipe é maravilhosa e trata ela como família. Tenho total tranquilidade sabendo que ela está em boas mãos.”',
+    autor: 'Maria Silva',
+    cargo: 'Filha de residente'
+  },
+  {
+    texto: '“Excelente estrutura e profissionais muito dedicados. Meu pai recebe todos os cuidados necessários e ainda participa de atividades que o mantêm ativo e feliz. Recomendo de olhos fechados!”',
+    autor: 'João Santos',
+    cargo: 'Filho de residente'
+  },
+  {
+    texto: '“O carinho e atenção que minha avó recebe aqui é incomparável. O ambiente é acolhedor e ela fez muitas amizades. Agradeço todos os dias por ter encontrado este lugar.”',
+    autor: 'Ana Costa',
+    cargo: 'Neta de residente'
+  }
+]
+---
+
+<section id="depoimentos" class="py-20 bg-white/60 border-y">
+  <div class="container-site">
+    <h2 class="h2 text-center mb-4">O que dizem as famílias</h2>
+    <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">
+      A confiança das famílias é nosso maior reconhecimento.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {itens.map((d) => (
+        <div class="card">
+          <div class="text-amber-500 mb-3">★★★★★</div>
+          <p class="text-slate-700 mb-6">{d.texto}</p>
+          <div class="pt-4 border-t">
+            <div class="font-semibold">{d.autor}</div>
+            <div class="text-sm text-slate-500">{d.cargo}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

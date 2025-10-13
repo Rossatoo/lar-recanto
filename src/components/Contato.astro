@@ -1,0 +1,69 @@
+---
+const telefoneLink = "https://wa.me/5511987654321?text=Olá! Quero agendar uma visita ao Vida Plena.";
+---
+
+<section id="contato" class="py-20">
+  <div class="container-site grid md:grid-cols-2 gap-10">
+    <div>
+      <h2 class="h2 mb-6">Agende uma visita</h2>
+      <p class="text-slate-600 mb-8">
+        Venha conhecer nossas instalações e conversar com nossa equipe. Será um prazer recebê-lo.
+      </p>
+
+      <ul class="space-y-6">
+        <li class="flex gap-4 items-start">
+          <div class="badge">☎</div>
+          <div>
+            <div class="font-semibold">Telefone</div>
+            <div>(55) xxxx-xxxx<br/>(55) xxxxx-xxxx</div>
+          </div>
+        </li>
+        <li class="flex gap-4 items-start">
+          <div class="badge">✉</div>
+          <div>
+            <div class="font-semibold">E-mail</div>
+            <div>contatolarrecanto@gmail.com.br</div>
+          </div>
+        </li>
+        <li class="flex gap-4 items-start">
+          <div class="badge">📍</div>
+          <div>
+            <div class="font-semibold">Endereço</div>
+            <div>Av. Assis Brasil - Júlio de Castilhos, RS, 98130-000</div>
+          </div>
+        </li>
+      </ul>
+
+      <a href={telefoneLink} target="_blank" class="btn btn-ghost mt-8">Falar no WhatsApp</a>
+    </div>
+
+    <form
+      action="https://formspree.io/f/SEU_FORM_ID"
+      method="POST"
+      class="card"
+    >
+      <label class="block mb-4">
+        <span class="font-medium">Seu nome</span>
+        <input required name="nome" type="text" class="mt-1 w-full rounded-md border-slate-300 focus:border-[var(--brand-600)] focus:ring-[var(--brand-600)]"/>
+      </label>
+
+      <label class="block mb-4">
+        <span class="font-medium">Seu e-mail</span>
+        <input required name="email" type="email" class="mt-1 w-full rounded-md border-slate-300 focus:border-[var(--brand-600)] focus:ring-[var(--brand-600)]"/>
+      </label>
+
+      <label class="block mb-4">
+        <span class="font-medium">Seu telefone</span>
+        <input name="telefone" type="tel" class="mt-1 w-full rounded-md border-slate-300 focus:border-[var(--brand-600)] focus:ring-[var(--brand-600)]"/>
+      </label>
+
+      <label class="block mb-6">
+        <span class="font-medium">Mensagem (opcional)</span>
+        <textarea name="mensagem" rows="4" class="mt-1 w-full rounded-md border-slate-300 focus:border-[var(--brand-600)] focus:ring-[var(--brand-600)]"></textarea>
+      </label>
+
+      <input type="hidden" name="_subject" value="Novo contato - Agendar visita" />
+      <button class="btn btn-primary w-full">Enviar Mensagem</button>
+    </form>
+  </div>
+</section>

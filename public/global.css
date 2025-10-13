@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* fontes (serif para títulos; sans para textos) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --brand-600:#174B3A; /* verde escuro */
+  --brand-500:#1E5C47;
+  --brand-50:#F1F5F3;
+  --paper:#F8F7F5;
+}
+
+html { scroll-behavior: smooth; }
+body{
+  @apply bg-[var(--paper)] text-slate-800;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.h1{
+  @apply text-5xl md:text-7xl leading-tight font-semibold;
+  font-family: 'Fraunces', serif;
+}
+.h2{
+  @apply text-4xl md:text-5xl leading-snug font-semibold;
+  font-family: 'Fraunces', serif;
+}
+.h3{
+  @apply text-2xl md:text-3xl font-semibold;
+  font-family: 'Fraunces', serif;
+}
+
+.btn{
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium border transition;
+}
+.btn-primary{
+  @apply bg-[var(--brand-600)] text-white border-[var(--brand-600)] hover:bg-[var(--brand-500)];
+}
+.btn-ghost{
+  @apply bg-white text-[var(--brand-600)] border-slate-200 hover:border-[var(--brand-600)];
+}
+
+.card{
+  @apply bg-white rounded-2xl shadow-sm p-8 border border-slate-100;
+}
+.badge{
+  @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--brand-50)] text-[var(--brand-600)];
+}
+.container-site{
+  @apply max-w-6xl mx-auto px-4 md:px-6;
+}

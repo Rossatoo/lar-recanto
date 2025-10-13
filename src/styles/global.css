@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* === utilitárias do projeto === */
+:root{
+  --brand-600:#174B3A;
+  --brand-500:#1E5C47;
+  --brand-50:#F1F5F3;
+  --paper:#F8F7F5;
+}
+html { scroll-behavior: smooth; }
+body{ background: var(--paper); color:#0f172a; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial; }
+
+.h1{ font-family:'Fraunces', serif; }
+.h2,.h3{ font-family:'Fraunces', serif; }
+.h1{ @apply text-5xl md:text-7xl leading-tight font-semibold; }
+.h2{ @apply text-4xl md:text-5xl leading-snug font-semibold; }
+.h3{ @apply text-2xl md:text-3xl font-semibold; }
+
+.btn{ @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium border transition; }
+.btn-primary{ @apply bg-[var(--brand-600)] text-white border-[var(--brand-600)] hover:bg-[var(--brand-500)]; }
+.btn-ghost{ @apply bg-white text-[var(--brand-600)] border-slate-200 hover:border-[var(--brand-600)]; }
+
+.card{ @apply bg-white rounded-2xl shadow-sm p-8 border border-slate-100; }
+.badge{ @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--brand-50)] text-[var(--brand-600)]; }
+.container-site{ @apply max-w-6xl mx-auto px-4 md:px-6; }
