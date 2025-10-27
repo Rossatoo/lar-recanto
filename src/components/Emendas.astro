@@ -1,0 +1,130 @@
+---
+/**
+ * Edite a lista abaixo. Coloque documentos (PDF/JPG/PNG) em /public/emendas/
+ * status: "Pago" | "Em execução" | "Empenhado" | "Aprovado" | "Cancelado"
+ */
+const emendas = [
+  {
+    ano: 2025,
+    autor: "Dep. Fulano de Tal",
+    objeto: "Aquisição de camas hospitalares",
+    valor: 150000.00,
+    data: "2025-06-10",
+    documentos: [
+      { label: "Ofício 123/2025", href: "/emendas/oficio-123-2025.pdf" },
+      { label: "Portaria", href: "/emendas/portaria-xyz.pdf" },
+    ],
+    prestacaoContas: "/emendas/prestacao-2025-camas.pdf",
+  },
+  {
+    ano: 2024,
+    autor: "Sen. Maria Exemplo",
+    objeto: "Reforma da ala de convivência",
+    valor: 280000.00,
+    data: "2024-11-22",
+    documentos: [
+      { label: "Convênio 45/2024", href: "/emendas/convenio-45-2024.pdf" },
+    ],
+    prestacaoContas: "",
+  }
+];
+
+// ordena do mais novo para o mais antigo
+const lista = emendas.sort((a, b) => b.ano - a.ano || b.valor - a.valor);
+
+// somatório
+const total = lista.reduce((s, e) => s + (Number(e.valor) || 0), 0);
+
+// helper de estilo do badge por status
+// function badgeClass(status) {
+//   switch ((status || "").toLowerCase()) {
+//     case "pago":         return "bg-emerald-50 text-emerald-800 border-emerald-200";
+//     case "em execução":  return "bg-amber-50 text-amber-800 border-amber-200";
+//     case "empenhado":    return "bg-sky-50 text-sky-800 border-sky-200";
+//     case "aprovado":     return "bg-indigo-50 text-indigo-800 border-indigo-200";
+//     case "cancelado":    return "bg-rose-50 text-rose-800 border-rose-200";
+//     default:             return "bg-slate-50 text-slate-700 border-slate-200";
+//   }
+// }
+---
+
+<section id="emendas" class="py-20">
+  <div class="container-site">
+    <h2 class="h2 text-center mb-4">Emendas Parlamentares Recebidas</h2>
+    <p class="text-center text-slate-600 max-w-3xl mx-auto">
+      Transparência das emendas destinadas ao Lar: objetivo, status, valores e documentos.
+    </p>
+
+    <!-- resumo -->
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-10">
+      <div class="card">
+        <div class="text-sm text-slate-500">Total recebido/previsto</div>
+        <div class="text-2xl font-semibold mt-1">
+          {total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+        </div>
+      </div>
+      <div class="card">
+        <div class="text-sm text-slate-500">Quantidade de emendas</div>
+        <div class="text-2xl font-semibold mt-1">{lista.length}</div>
+      </div>
+      <div class="card">
+        <div class="text-sm text-slate-500">Última atualização</div>
+        <div class="text-2xl font-semibold mt-1">
+          {new Date().toLocaleDateString("pt-BR")}
+        </div>
+      </div>
+    </div>
+
+    <!-- cards -->
+    <div class="grid md:grid-cols-2 gap-6 mt-8">
+      {lista.map((e) => (
+        <article class="card">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-sm text-slate-500">Ano</div>
+              <div class="text-xl font-semibold">{e.ano}</div>
+            </div>
+          </div>
+
+          <div class="mt-4 grid sm:grid-cols-2 gap-4">
+            <div>
+              <div class="text-sm text-slate-500">Autor</div>
+              <div class="font-medium">{e.autor}</div>
+            </div>
+            <div>
+              <div class="text-sm text-slate-500">Valor</div>
+              <div class="font-semibold">
+                {Number(e.valor).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+              </div>
+              {e.data && (
+                <div class="text-slate-500 text-sm">Data: {new Date(e.data).toLocaleDateString("pt-BR")}</div>
+              )}
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <div class="text-sm text-slate-500">Objeto</div>
+            <p class="text-slate-700">{e.objeto}</p>
+          </div>
+
+          {(e.documentos?.length || e.prestacaoContas) && (
+            <div class="mt-5">
+              <div class="text-sm text-slate-500 mb-2">Documentos</div>
+              <div class="flex flex-wrap gap-2">
+                {e.documentos?.map((d) => (
+                  <a href={d.href} target="_blank" class="btn btn-ghost">{d.label}</a>
+                ))}
+                {e.prestacaoContas && (
+                  <a href={e.prestacaoContas} target="_blank" class="btn btn-primary">Prestação de contas</a>
+                )}
+              </div>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <!-- dica de onde salvar os PDFs -->
+    <p class="text-xs text-slate-500 mt-6">Dica: coloque os PDFs/Imagens em <code>/public/emendas/</code> e use os caminhos iniciando com <code>/emendas/arquivo.pdf</code>.</p>
+  </div>
+</section>
