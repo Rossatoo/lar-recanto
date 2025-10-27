@@ -1,0 +1,64 @@
+---
+/** Galeria de doações (imagens + lightbox) **/
+const fotos = [
+  { src: "/public/doacoes/alimentos.jpg", alt: "Doações de alimentos" },
+  { src: "/public/doacoes/alimentos-2.jpg", alt: "Doações de alimentos" },
+  { src: "/public/doacoes/alimentos-3.jpg", alt: "Doações de alimentos" },
+  { src: "/public/doacoes/vegetais.jpg", alt: "Doações de vegetais" }
+];
+---
+
+<section id="doacoes" class="py-20 bg-white/60 border-y">
+  <div class="container-site">
+    <h2 class="h2 text-center mb-4">Doações</h2>
+    <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">
+      Agradecemos a todos que contribuem! Veja alguns registros de doações recentes.
+    </p>
+
+    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {fotos.map((f) => (
+        <button
+          class="group relative overflow-hidden rounded-2xl border border-slate-100 focus:outline-none"
+          data-full={f.src}
+          aria-label={"Ampliar " + f.alt}
+        >
+          <img src={f.src} alt={f.alt} class="h-56 w-full object-cover transition group-hover:scale-105" loading="lazy" />
+          <div class="absolute bottom-0 inset-x-0 bg-black/40 text-white text-sm px-3 py-2 flex items-center justify-between">
+            <span class="truncate">{f.alt}</span>
+            {/* <span class="opacity-80">{new Date(f.data).toLocaleDateString('pt-BR')}</span> */}
+          </div>
+        </button>
+      ))}
+    </div>
+
+    <!-- Lightbox exclusivo da seção de Doações -->
+    <dialog id="donationsDialog" class="backdrop:bg-black/70 p-0 rounded-2xl">
+      <div class="relative">
+        <img id="donationsImg" src="" alt="" class="max-h-[80vh] w-auto object-contain rounded-2xl" />
+        <button id="donationsClose" class="absolute top-3 right-3 btn btn-ghost bg-white/90">Fechar</button>
+      </div>
+    </dialog>
+
+    <script is:inline>
+      // Isola o escopo para esta seção, para não conflitar com "Eventos"
+      const section = document.currentScript.closest('#doacoes');
+      const dialog  = section.querySelector('#donationsDialog');
+      const imgEl   = section.querySelector('#donationsImg');
+      const close   = section.querySelector('#donationsClose');
+
+      section.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-full]');
+        if (!btn) return;
+        const src = btn.getAttribute('data-full');
+        const alt = btn.getAttribute('aria-label') || '';
+        imgEl.src = src; imgEl.alt = alt;
+        dialog.showModal();
+      });
+
+      close.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) dialog.close();
+      });
+    </script>
+  </div>
+</section>
